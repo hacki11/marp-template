@@ -2,6 +2,10 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.8 - 2026-08-26
+
+- Removed the obsolete initial-deck answer from Copier metadata.
+
 ## 0.1.7 - 2026-08-26
 
 - Removed the redundant Marpme configuration file; Copier metadata remains authoritative.
