@@ -2,7 +2,7 @@
   "name": "marpme-template",
   "version": "0.1.0",
   "private": true,
-  "description": "Demo Marp and Copier template for Marpme",
+  "description": "Canonical Marp and Copier template for Marpme",
   "scripts": {
     "preview": "npx --yes @marp-team/marp-cli@4.5.0 example.md --theme-set css/company.css --theme-set css/company-dark.css --preview",
     "pdf": "npx --yes @marp-team/marp-cli@4.5.0 example.md --theme-set css/company.css --theme-set css/company-dark.css --pdf --output dist/example.pdf",

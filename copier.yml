@@ -5,9 +5,10 @@ _answers_file: .copier-answers.yml
 deck_name:
   type: str
   default: slidedeck
-  help: Name of the first presentation deck.
+  help: >-
+    Name requested by Marpme. It is recorded for provenance; Marpme copies the
+    literal .marpme/starter directory into the user-owned deck folder.
   validator: >-
     {% if not (deck_name | regex_search('^[A-Za-z0-9][A-Za-z0-9._-]*$')) %}
     Use letters, numbers, dots, underscores, or hyphens; paths are not allowed.
     {% endif %}
-
