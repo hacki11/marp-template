@@ -2,6 +2,11 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.5 - 2026-08-26
+
+- Place newly created decks directly in the repository root.
+- Removed the obsolete `presentations_dir` configuration key.
+
 ## 0.1.3 - 2026-08-26
 
 - Moved generated Marpme metadata into `.marpme/`.

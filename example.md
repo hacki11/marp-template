@@ -43,7 +43,7 @@ The generated workspace keeps shared infrastructure separate from deck content.
 ```text
 repo/
 ├── .marpme/       shared, versioned infrastructure
-└── presentations/ user-owned decks and assets
+└── <deck-name>/   user-owned decks and assets
 ```
 
 ---
@@ -55,4 +55,3 @@ repo/
 # Ready for the next slide
 
 Use **clear hierarchy**, focused messages, and just enough visual structure.
-
