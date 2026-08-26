@@ -2,6 +2,9 @@
 @import "default";
 
 :root {
+  --dark-accent: #36d1d7;
+  --dark-panel: #202d4d;
+  --dark-line: #43557c;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   color: #edf2ff;
   background: #11182a;
@@ -33,24 +36,38 @@ h3 {
 
 h2 {
   padding-bottom: 0.22em;
-  border-bottom: 3px solid #26c0c7;
+  border-bottom: 3px solid var(--dark-accent);
 }
 
 blockquote {
   padding: 0.35em 0 0.35em 0.8em;
-  border-left: 6px solid #26c0c7;
+  border-left: 6px solid var(--dark-accent);
   color: #c2cce3;
 }
 
 code {
-  background: #263455;
+  background: var(--dark-panel);
   color: #d8e6ff;
 }
 
 pre {
-  border: 1px solid #3a4b72;
+  border: 1px solid var(--dark-line);
   border-radius: 12px;
   box-shadow: 0 14px 35px rgb(0 0 0 / 28%);
+}
+
+table {
+  width: 100%;
+  font-size: 0.82em;
+}
+
+th {
+  background: var(--dark-accent);
+  color: #10192b;
+}
+
+td {
+  border-color: var(--dark-line);
 }
 
 section::after,
@@ -58,4 +75,3 @@ header,
 footer {
   color: #9dabc8;
 }
-

@@ -75,8 +75,8 @@ Copier updates require stable semantic-version Git tags. Before tagging, ensure
 the working tree is clean and run the template validation workflow. Then:
 
 ```sh
-git tag v0.1.0
-git push origin main v0.1.0
+git tag -a v0.1.1 -m "Release v0.1.1"
+git push origin main v0.1.1
 ```
 
 Do not move a published tag. Marpme records the selected tag in
