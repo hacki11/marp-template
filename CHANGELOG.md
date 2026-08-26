@@ -2,6 +2,10 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.6 - 2026-08-26
+
+- Removed the starter `custom.css`; deck content now comes only from the template starter.
+
 ## 0.1.5 - 2026-08-26
 
 - Place newly created decks directly in the repository root.

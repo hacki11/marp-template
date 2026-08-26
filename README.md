@@ -60,12 +60,12 @@ copier.yml                      template questions and Copier configuration
 .vscode/                        template-development recommendations and tasks
 ```
 
-The generated `.marpme/` files are template-managed. Presentation decks,
-assets, and `custom.css` files remain user-owned.
+The generated `.marpme/` files are template-managed. Presentation decks and
+assets remain user-owned.
 
-The starter directory must remain literal: Marpme copies it when each deck is
-created. Do not put Copier/Jinja expressions in starter files, because later decks
-are created without rerunning Copier. The template's
+The starter directory must remain literal and include `deck.md`: Marpme copies it
+when each deck is created. Do not put Copier/Jinja expressions in starter files,
+because later decks are created without rerunning Copier. The template's
 `{{ _copier_conf.answers_file }}.jinja` renders `.marpme/copier-answers.yml`, which is
 required for `marpme update`.
 
