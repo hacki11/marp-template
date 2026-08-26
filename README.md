@@ -65,8 +65,8 @@ assets, and `custom.css` files remain user-owned.
 
 The starter directory must remain literal: Marpme copies it when each deck is
 created. Do not put Copier/Jinja expressions in starter files, because later decks
-are created without rerunning Copier. The root
-`{{ _copier_conf.answers_file }}.jinja` renders `.copier-answers.yml`, which is
+are created without rerunning Copier. The template's
+`{{ _copier_conf.answers_file }}.jinja` renders `.marpme/copier-answers.yml`, which is
 required for `marpme update`.
 
 ## Release a template version
@@ -80,7 +80,7 @@ git push origin main v0.1.2
 ```
 
 Do not move a published tag. Marpme records the selected tag in
-`.copier-answers.yml` and asks Copier to merge later tagged releases.
+`.marpme/copier-answers.yml` and asks Copier to merge later tagged releases.
 
 The repository must have at least one version tag before it is used in production.
 Without a tag, Copier records a commit hash and cannot perform normal

@@ -2,4 +2,3 @@ version: 1
 presentations_dir: presentations
 template:
   channel: stable
-
