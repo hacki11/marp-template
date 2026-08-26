@@ -24,7 +24,6 @@ jobs:
             --data deck_name=ci-test \
             . "$destination"
           test -f "$destination/.marpme/copier-answers.yml"
-          test -f "$destination/.marpme/config.yml"
           test -f "$destination/.marpme/theme/company.css"
           test -f "$destination/.marpme/theme/company-dark.css"
           test -f "$destination/.marpme/starter/deck.md"

@@ -2,6 +2,10 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.7 - 2026-08-26
+
+- Removed the redundant Marpme configuration file; Copier metadata remains authoritative.
+
 ## 0.1.6 - 2026-08-26
 
 - Removed the starter `custom.css`; deck content now comes only from the template starter.
