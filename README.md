@@ -72,7 +72,8 @@ required for `marpme update`.
 ## Release a template version
 
 Copier updates require stable semantic-version Git tags. Before tagging, ensure
-the working tree is clean and run the template validation workflow. Then:
+the working tree is clean, move the release notes from `Unreleased` to a versioned
+`CHANGELOG.md` heading, and run the template validation workflow. Then:
 
 ```sh
 git tag -a v0.1.2 -m "Release v0.1.2"

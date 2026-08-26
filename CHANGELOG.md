@@ -2,6 +2,12 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.3 - 2026-08-26
+
+- Moved generated Marpme metadata into `.marpme/`.
+- Removed the generated `.marpme/README.md`.
+- Added CI validation for the versioned template changelog.
+
 ## 0.1.2 - 2026-08-26
 
 - Added a richer gradient and centered title treatment to the dark lead slide.
