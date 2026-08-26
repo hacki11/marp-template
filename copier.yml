@@ -1,0 +1,13 @@
+_min_copier_version: "9.4.0"
+_subdirectory: template
+_answers_file: .copier-answers.yml
+
+deck_name:
+  type: str
+  default: slidedeck
+  help: Name of the first presentation deck.
+  validator: >-
+    {% if not (deck_name | regex_search('^[A-Za-z0-9][A-Za-z0-9._-]*$')) %}
+    Use letters, numbers, dots, underscores, or hyphens; paths are not allowed.
+    {% endif %}
+

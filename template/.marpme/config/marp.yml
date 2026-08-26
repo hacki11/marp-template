@@ -1,0 +1,6 @@
+# Optional Marp CLI configuration for repositories that choose to render locally.
+themeSet:
+  - ./.marpme/theme/company.css
+  - ./.marpme/theme/company-dark.css
+allowLocalFiles: true
+

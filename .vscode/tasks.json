@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Marp: Export example PDF",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@marp-team/marp-cli@4.5.0",
+        "example.md",
+        "--theme-set",
+        "css/company.css",
+        "--theme-set",
+        "css/company-dark.css",
+        "--pdf",
+        "--output",
+        "dist/example.pdf"
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Marp: Preview example",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@marp-team/marp-cli@4.5.0",
+        "example.md",
+        "--theme-set",
+        "css/company.css",
+        "--theme-set",
+        "css/company-dark.css",
+        "--preview"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Template: Bundle",
+      "type": "npm",
+      "script": "bundle",
+      "problemMatcher": []
+    }
+  ]
+}

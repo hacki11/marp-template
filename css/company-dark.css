@@ -1,0 +1,61 @@
+/* @theme company-dark */
+@import "default";
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #edf2ff;
+  background: #11182a;
+}
+
+section {
+  align-content: start;
+  padding: 68px 76px;
+  background:
+    radial-gradient(circle at 88% 12%, rgb(25 190 196 / 16%), transparent 27%),
+    linear-gradient(145deg, #11182a, #182445);
+  font-size: 29px;
+  line-height: 1.35;
+}
+
+h1,
+h2,
+h3,
+strong,
+a {
+  color: #ffffff;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  padding-bottom: 0.22em;
+  border-bottom: 3px solid #26c0c7;
+}
+
+blockquote {
+  padding: 0.35em 0 0.35em 0.8em;
+  border-left: 6px solid #26c0c7;
+  color: #c2cce3;
+}
+
+code {
+  background: #263455;
+  color: #d8e6ff;
+}
+
+pre {
+  border: 1px solid #3a4b72;
+  border-radius: 12px;
+  box-shadow: 0 14px 35px rgb(0 0 0 / 28%);
+}
+
+section::after,
+header,
+footer {
+  color: #9dabc8;
+}
+
