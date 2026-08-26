@@ -20,6 +20,18 @@ section {
   line-height: 1.35;
 }
 
+section.lead {
+  align-content: center;
+  background:
+    radial-gradient(circle at 82% 18%, rgb(54 209 215 / 24%), transparent 28%),
+    linear-gradient(135deg, #0d1426, #1c3470 64%, #087f91);
+}
+
+section.lead h1 {
+  max-width: 850px;
+  font-size: 2.65em;
+}
+
 h1,
 h2,
 h3,

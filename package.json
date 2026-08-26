@@ -1,6 +1,6 @@
 {
   "name": "marpme-template",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Canonical Marp and Copier template for Marpme",
   "scripts": {
