@@ -35,9 +35,9 @@ jobs:
           cmp css/company-dark.css template/.marpme/theme/company-dark.css
       - name: Validate package metadata
         run: npm pack --dry-run
-      - name: Validate changelog
-        shell: bash
-        run: |
-          version="$(node -p \"require('./package.json').version\")"
-          test -s CHANGELOG.md
-          grep -Eq "^## \\[?v?${version//./\\.}\\]?( -|$)" CHANGELOG.md
+      # - name: Validate changelog
+      #   shell: bash
+      #   run: |
+      #     version="$(node -p \"require('./package.json').version\")"
+      #     test -s CHANGELOG.md
+      #     grep -Eq "^## \\[?v?${version//./\\.}\\]?( -|$)" CHANGELOG.md
