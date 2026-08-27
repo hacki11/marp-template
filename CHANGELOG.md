@@ -2,6 +2,10 @@
 
 All notable changes to this template are documented here.
 
+## 0.2.0 - 2026-08-27
+
+- Corrected the CI assertion for Copier metadata stored under `.marpme/`.
+
 ## 0.1.9 - 2026-08-27
 
 - Re-enabled workflow validation for the package version and changelog.

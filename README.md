@@ -76,8 +76,8 @@ the working tree is clean, move the release notes from `Unreleased` to a version
 `CHANGELOG.md` heading, and run the template validation workflow. Then:
 
 ```sh
-git tag -a v0.1.9 -m "Release v0.1.9"
-git push origin main v0.1.9
+git tag -a v0.2.0 -m "Release v0.2.0"
+git push origin main v0.2.0
 ```
 
 Do not move a published tag. Marpme records the selected tag in
