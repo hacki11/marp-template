@@ -2,6 +2,11 @@
 
 All notable changes to this template are documented here.
 
+## 0.1.9 - 2026-08-27
+
+- Re-enabled workflow validation for the package version and changelog.
+- Added automatic GitHub Release publishing for version tags.
+
 ## 0.1.8 - 2026-08-26
 
 - Removed the obsolete initial-deck answer from Copier metadata.

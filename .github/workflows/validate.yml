@@ -2,7 +2,14 @@ name: Validate template
 
 on:
   push:
+    branches:
+      - "**"
+    tags:
+      - "v*.*.*"
   pull_request:
+
+permissions:
+  contents: read
 
 jobs:
   copier:
@@ -23,7 +30,7 @@ jobs:
             --defaults \
             --data deck_name=ci-test \
             . "$destination"
-          test -f "$destination/.marpme/copier-answers.yml"
+          test -f "$destination/.copier-answers.yml"
           test -f "$destination/.marpme/theme/company.css"
           test -f "$destination/.marpme/theme/company-dark.css"
           test -f "$destination/.marpme/starter/deck.md"
@@ -34,9 +41,41 @@ jobs:
           cmp css/company-dark.css template/.marpme/theme/company-dark.css
       - name: Validate package metadata
         run: npm pack --dry-run
-      # - name: Validate changelog
-      #   shell: bash
-      #   run: |
-      #     version="$(node -p \"require('./package.json').version\")"
-      #     test -s CHANGELOG.md
-      #     grep -Eq "^## \\[?v?${version//./\\.}\\]?( -|$)" CHANGELOG.md
+      - name: Validate changelog
+        shell: bash
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          test -s CHANGELOG.md
+          grep -Eq "^## (v)?${version//./\\.}( |$)" CHANGELOG.md
+
+  release:
+    name: Publish GitHub release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: copier
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check tag matches package version
+        shell: bash
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          test "v$version" = "$GITHUB_REF_NAME"
+      - name: Build template bundle
+        run: |
+          mkdir -p dist
+          npm pack --pack-destination dist
+          artifact="dist/marpme-template-$(node -p "require('./package.json').version").tgz"
+          test -s "$artifact"
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          artifact="dist/marpme-template-$(node -p "require('./package.json').version").tgz"
+          gh release create "$GITHUB_REF_NAME" "$artifact" \
+            --verify-tag \
+            --title "$GITHUB_REF_NAME" \
+            --generate-notes
