@@ -1,9 +1,9 @@
 # Marpme template
 
-This is the canonical, upgrade-friendly Copier template consumed by the
-[`marpme`](https://github.com/hacki11/marpme) CLI. It installs shared themes,
-configuration, starter files, and AI presentation guidance into an existing Git
-repository while keeping presentation content user-owned.
+This repository is both the directly usable development workspace for the company
+Marp themes and the canonical Copier template consumed by the
+[`marpme`](https://github.com/hacki11/marpme) CLI. The same theme and VS Code
+configuration files are used in both workflows.
 
 ## Try the example
 
@@ -15,8 +15,8 @@ npm run pdf
 
 The PDF is written to `dist/example.pdf`. In VS Code, the recommended Marp
 extension previews `example.md`, and the tasks palette exposes preview and PDF
-export tasks. The first render downloads Marp CLI through `npx`; it is not a
-runtime dependency of Marpme or part of the downloadable template bundle.
+export tasks for the currently active Markdown file. The first render downloads
+Marp CLI through `npx`; it is not a runtime dependency of Marpme.
 
 PDF export requires Chrome, Edge, or Firefox. This is a theme-development
 dependency only; the `marpme` CLI does not install or wrap Marp.
@@ -27,10 +27,10 @@ dependency only; the `marpme` CLI does not install or wrap Marp.
 npm run bundle
 ```
 
-This creates `dist/marpme-template-<version>.tgz`. The archive contains
-`copier.yml`, `template/`, and the release documentation, so tooling can
-download and extract it as a Copier template source. The version comes from
-`package.json` and should match the Git release tag.
+This creates `dist/marpme-template-<version>.tgz`. The archive contains the
+Copier definition, `.marpme` payload, root `.vscode` source configuration, and
+release documentation. The version comes from `package.json` and should match
+the Git release tag.
 
 For local CLI integration testing, point Marpme directly at this checkout:
 
@@ -50,24 +50,25 @@ Git authentication is handled by the user's normal SSH configuration or
 ## Layout
 
 ```text
-css/                            themes used by the development example
-example.md                      theme showcase
-template/.marpme/theme/         shared Copier-managed themes
-template/.marpme/config/        optional rendering configuration
-template/.marpme/skills/slides/ AI presentation guidance
-template/.marpme/starter/       literal source for each new user-owned deck
-copier.yml                      template questions and Copier configuration
-.vscode/                        template-development recommendations and tasks
+.marpme/themes/                 canonical themes used here and in target repositories
+.marpme/starter/                literal source for each new user-owned deck
+.vscode/                        canonical settings, tasks, and extension recommendations
+example.md                      theme-development showcase
+copier.yml                      Copier configuration
 ```
 
-The generated `.marpme/` files are template-managed. Presentation decks and
-assets remain user-owned.
+Copier installs `.marpme/themes/` and `.marpme/starter/`. Marpme reads the root
+`.vscode` files from the selected template revision and merges them into the
+target repository using a semantic three-way merge. Unchanged template entries can
+be updated or removed; simultaneous user and template edits are reported while the
+user value is preserved. The `.vscode` directory is excluded from Copier so it
+cannot overwrite user files directly.
 
 The starter directory must remain literal and include `deck.md`: Marpme copies it
 when each deck is created. Do not put Copier/Jinja expressions in starter files,
-because later decks are created without rerunning Copier. The template's
-`{{ _copier_conf.answers_file }}.jinja` renders `.marpme/copier-answers.yml`, which is
-required for `marpme update`.
+because later decks are created without rerunning Copier. The template's answers
+file template renders `.marpme/copier-answers.yml`, which is required for
+`marpme update`.
 
 ## Release a template version
 
@@ -76,8 +77,8 @@ the working tree is clean, move the release notes from `Unreleased` to a version
 `CHANGELOG.md` heading, and run the template validation workflow. Then:
 
 ```sh
-git tag -a v0.2.0 -m "Release v0.2.0"
-git push origin main v0.2.0
+git tag -a v0.3.0 -m "Release v0.3.0"
+git push origin main v0.3.0
 ```
 
 Do not move a published tag. Marpme records the selected tag in

@@ -2,6 +2,13 @@
 
 All notable changes to this template are documented here.
 
+## 0.3.0 - 2026-08-28
+
+- Made `.marpme/themes/`, `.marpme/starter/`, and root `.vscode` files the canonical
+  sources for both direct theme development and Marpme-managed repositories.
+- Removed duplicated generated themes, obsolete Marp configuration, and template-only
+  VS Code tasks from the Copier payload.
+
 ## 0.2.0 - 2026-08-27
 
 - Corrected the CI assertion for Copier metadata stored under `.marpme/`.

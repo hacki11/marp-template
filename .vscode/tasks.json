@@ -2,20 +2,20 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Marp: Export example PDF",
+      "label": "Marp: Export current deck as PDF",
       "type": "process",
       "command": "npx",
       "args": [
         "--yes",
         "@marp-team/marp-cli@4.5.0",
-        "example.md",
+        "${file}",
         "--theme-set",
-        "css/company.css",
+        "${workspaceFolder}/.marpme/themes/company.css",
         "--theme-set",
-        "css/company-dark.css",
+        "${workspaceFolder}/.marpme/themes/company-dark.css",
         "--pdf",
         "--output",
-        "dist/example.pdf"
+        "${fileDirname}/${fileBasenameNoExtension}.pdf"
       ],
       "problemMatcher": [],
       "group": {
@@ -24,25 +24,19 @@
       }
     },
     {
-      "label": "Marp: Preview example",
+      "label": "Marp: Preview current deck",
       "type": "process",
       "command": "npx",
       "args": [
         "--yes",
         "@marp-team/marp-cli@4.5.0",
-        "example.md",
+        "${file}",
         "--theme-set",
-        "css/company.css",
+        "${workspaceFolder}/.marpme/themes/company.css",
         "--theme-set",
-        "css/company-dark.css",
+        "${workspaceFolder}/.marpme/themes/company-dark.css",
         "--preview"
       ],
-      "problemMatcher": []
-    },
-    {
-      "label": "Template: Bundle",
-      "type": "npm",
-      "script": "bundle",
       "problemMatcher": []
     }
   ]

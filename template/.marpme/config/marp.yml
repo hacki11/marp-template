@@ -1,5 +1,0 @@
-# Optional Marp CLI configuration for repositories that choose to render locally.
-themeSet:
-  - ../theme/company.css
-  - ../theme/company-dark.css
-allowLocalFiles: true

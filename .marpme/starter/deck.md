@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: company
+theme: company-dark
 size: 16:9
 paginate: true
 ---
