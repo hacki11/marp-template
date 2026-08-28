@@ -2,7 +2,7 @@
 
 All notable changes to this template are documented here.
 
-## Unreleased
+## 0.4.2 - 2026-08-28
 
 - Removed the unused npm package and template archive release process; Git tags are
   the only supported Copier distribution.
