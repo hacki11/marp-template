@@ -3,5 +3,5 @@
         "./.marpme/themes/company.css",
         "./.marpme/themes/company-dark.css"
     ],
-    "markdown.marp.html": "all"
+    "markdown.marp.html": "off"
 }
