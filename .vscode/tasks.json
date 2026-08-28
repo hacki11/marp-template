@@ -2,21 +2,54 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Marp: Export current deck as HTML",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@marp-team/marp-cli@latest",
+        "${file}",
+        "--output",
+        "${fileDirname}/${fileBasenameNoExtension}.html"
+      ],
+      "problemMatcher": []
+    },
+    {
       "label": "Marp: Export current deck as PDF",
       "type": "process",
       "command": "npx",
       "args": [
         "--yes",
-        "@marp-team/marp-cli@4.5.0",
+        "@marp-team/marp-cli@latest",
         "${file}",
-        "--theme-set",
-        "${workspaceFolder}/.marpme/themes/company.css",
-        "--theme-set",
-        "${workspaceFolder}/.marpme/themes/company-dark.css",
         "--pdf",
         "--output",
         "${fileDirname}/${fileBasenameNoExtension}.pdf"
       ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Marp: Export current deck as PPTX",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@marp-team/marp-cli@latest",
+        "${file}",
+        "--pptx",
+        "--output",
+        "${fileDirname}/${fileBasenameNoExtension}.pptx"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Marp: Export current deck in all formats",
+      "dependsOn": [
+        "Marp: Export current deck as HTML",
+        "Marp: Export current deck as PDF",
+        "Marp: Export current deck as PPTX"
+      ],
+      "dependsOrder": "parallel",
       "problemMatcher": [],
       "group": {
         "kind": "build",
@@ -29,12 +62,8 @@
       "command": "npx",
       "args": [
         "--yes",
-        "@marp-team/marp-cli@4.5.0",
+        "@marp-team/marp-cli@latest",
         "${file}",
-        "--theme-set",
-        "${workspaceFolder}/.marpme/themes/company.css",
-        "--theme-set",
-        "${workspaceFolder}/.marpme/themes/company-dark.css",
         "--preview"
       ],
       "problemMatcher": []

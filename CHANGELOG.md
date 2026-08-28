@@ -2,6 +2,13 @@
 
 All notable changes to this template are documented here.
 
+## 0.5.0 - 2026-08-28
+
+- Added a Copier-managed `.marprc.yml` with the shared theme directory and trusted
+  local-file access configured for Marp CLI.
+- Switched VS Code tasks to the latest Marp CLI and added parallel HTML, PDF, and
+  PPTX exports for the active deck.
+
 ## 0.4.2 - 2026-08-28
 
 - Removed the unused npm package and template archive release process; Git tags are

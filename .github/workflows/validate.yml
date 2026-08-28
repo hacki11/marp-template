@@ -34,6 +34,7 @@ jobs:
           test -f "$destination/.marpme/themes/company.css"
           test -f "$destination/.marpme/themes/company-dark.css"
           test -f "$destination/.marpme/starter/deck.md"
+          test -f "$destination/.marprc.yml"
           test ! -e "$destination/.vscode"
           test ! -e "$destination/example.md"
       - name: Validate VS Code configuration
@@ -41,6 +42,8 @@ jobs:
           jq empty .vscode/extensions.json
           jq empty .vscode/settings.json
           jq empty .vscode/tasks.json
+          grep -Fx "themeSet: ./.marpme/themes" .marprc.yml
+          grep -Fx "allowLocalFiles: true" .marprc.yml
       - name: Validate changelog
         shell: bash
         run: |

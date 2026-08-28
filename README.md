@@ -7,19 +7,18 @@ configuration files are used in both workflows.
 
 ## Try the example
 
-Export the deck with the pinned Marp CLI release:
+Export the deck with the latest Marp CLI release:
 
 ```sh
-npx --yes @marp-team/marp-cli@4.5.0 example.md \
-  --theme-set .marpme/themes/company.css \
-  --theme-set .marpme/themes/company-dark.css \
-  --pdf --output example.pdf
+npx --yes @marp-team/marp-cli@latest example.md --pdf --output example.pdf
 ```
 
-The PDF is written to `example.pdf`. In VS Code, the recommended Marp
-extension previews `example.md`, and the tasks palette exposes preview and PDF
-export tasks for the currently active Markdown file. The first render downloads
-Marp CLI through `npx`; it is not a runtime dependency of Marpme.
+The root `.marprc.yml` automatically registers every CSS file in
+`.marpme/themes/` and permits trusted decks to access local assets. In VS Code,
+the recommended Marp extension previews `example.md`, and the tasks palette can
+export the active deck as HTML, PDF, PPTX, or all three formats in parallel. The
+first invocation downloads the latest Marp CLI through `npx`; it is not a runtime
+dependency of Marpme.
 
 PDF export requires Chrome, Edge, or Firefox. This is a theme-development
 dependency only; the `marpme` CLI does not install or wrap Marp.
@@ -45,11 +44,12 @@ Git authentication is handled by the user's normal SSH configuration or
 .marpme/themes/                 canonical themes used here and in target repositories
 .marpme/starter/                literal source for each new user-owned deck
 .vscode/                        canonical settings, tasks, and extension recommendations
+.marprc.yml                     shared Marp CLI configuration managed by Copier
 example.md                      theme-development showcase
 copier.yml                      Copier configuration
 ```
 
-Copier installs `.marpme/themes/` and `.marpme/starter/`. Marpme reads the root
+Copier installs `.marpme/themes/`, `.marpme/starter/`, and `.marprc.yml`. Marpme reads the root
 `.vscode` files from the selected template revision and merges them into the
 target repository using a semantic three-way merge. Unchanged template entries can
 be updated or removed; simultaneous user and template edits are reported while the
@@ -69,8 +69,8 @@ the working tree is clean, move the release notes from `Unreleased` to a version
 `CHANGELOG.md` heading, and run the template validation workflow. Then:
 
 ```sh
-git tag -a v0.3.0 -m "Release v0.3.0"
-git push origin main v0.3.0
+git tag -a v0.5.0 -m "Release v0.5.0"
+git push origin main v0.5.0
 ```
 
 Do not move a published tag. Marpme records the selected tag in
