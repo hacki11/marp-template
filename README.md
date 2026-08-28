@@ -10,27 +10,19 @@ configuration files are used in both workflows.
 Export the deck with the pinned Marp CLI release:
 
 ```sh
-npm run pdf
+npx --yes @marp-team/marp-cli@4.5.0 example.md \
+  --theme-set .marpme/themes/company.css \
+  --theme-set .marpme/themes/company-dark.css \
+  --pdf --output example.pdf
 ```
 
-The PDF is written to `dist/example.pdf`. In VS Code, the recommended Marp
+The PDF is written to `example.pdf`. In VS Code, the recommended Marp
 extension previews `example.md`, and the tasks palette exposes preview and PDF
 export tasks for the currently active Markdown file. The first render downloads
 Marp CLI through `npx`; it is not a runtime dependency of Marpme.
 
 PDF export requires Chrome, Edge, or Firefox. This is a theme-development
 dependency only; the `marpme` CLI does not install or wrap Marp.
-
-## Build the downloadable template
-
-```sh
-npm run bundle
-```
-
-This creates `dist/marpme-template-<version>.tgz`. The archive contains the
-Copier definition, `.marpme` payload, root `.vscode` source configuration, and
-release documentation. The version comes from `package.json` and should match
-the Git release tag.
 
 For local CLI integration testing, point Marpme directly at this checkout:
 
@@ -83,6 +75,8 @@ git push origin main v0.3.0
 
 Do not move a published tag. Marpme records the selected tag in
 `.marpme/copier-answers.yml` and asks Copier to merge later tagged releases.
+The Git tag is the distributable template; no npm package or custom archive is
+published.
 
 The repository must have at least one version tag before it is used in production.
 Without a tag, Copier records a commit hash and cannot perform normal

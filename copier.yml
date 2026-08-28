@@ -9,8 +9,4 @@ _exclude:
   - .vscode
   - CHANGELOG.md
   - README.md
-  - package.json
-  - package-lock.json
-  - dist
-  - node_modules
   - example.md

@@ -41,14 +41,14 @@ jobs:
           jq empty .vscode/extensions.json
           jq empty .vscode/settings.json
           jq empty .vscode/tasks.json
-      - name: Validate package metadata
-        run: npm pack --dry-run
       - name: Validate changelog
         shell: bash
         run: |
-          version="$(node -p "require('./package.json').version")"
           test -s CHANGELOG.md
-          grep -Eq "^## (v)?${version//./\\.}( |$)" CHANGELOG.md
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            version="${GITHUB_REF_NAME#v}"
+            grep -Eq "^## (v)?${version//./\\.}( |$)" CHANGELOG.md
+          fi
 
   release:
     name: Publish GitHub release
@@ -61,23 +61,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Check tag matches package version
-        shell: bash
-        run: |
-          version="$(node -p "require('./package.json').version")"
-          test "v$version" = "$GITHUB_REF_NAME"
-      - name: Build template bundle
-        run: |
-          mkdir -p dist
-          npm pack --pack-destination dist
-          artifact="dist/marpme-template-$(node -p "require('./package.json').version").tgz"
-          test -s "$artifact"
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          artifact="dist/marpme-template-$(node -p "require('./package.json').version").tgz"
-          gh release create "$GITHUB_REF_NAME" "$artifact" \
-            --verify-tag \
-            --title "$GITHUB_REF_NAME" \
-            --generate-notes
+        run: >-
+          gh release create "$GITHUB_REF_NAME"
+          --verify-tag
+          --title "$GITHUB_REF_NAME"
+          --generate-notes

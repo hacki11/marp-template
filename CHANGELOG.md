@@ -2,6 +2,11 @@
 
 All notable changes to this template are documented here.
 
+## Unreleased
+
+- Removed the unused npm package and template archive release process; Git tags are
+  the only supported Copier distribution.
+
 ## 0.3.0 - 2026-08-28
 
 - Made `.marpme/themes/`, `.marpme/starter/`, and root `.vscode` files the canonical
